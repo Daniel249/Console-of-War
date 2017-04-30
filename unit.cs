@@ -13,7 +13,7 @@ class Unit {
     protected string hitCode;
     // daño que inflige por ataque
     protected int attackDamage;
-    // 1 for meleee
+    // 1 for melee
     protected int attackRange;
     // 1 for each turn
     protected int atackSpeed;
