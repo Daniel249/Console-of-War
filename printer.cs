@@ -14,16 +14,17 @@ class Printer {
     }
     // asks input
     public static string askInput() {
-
+        return null;
     }
     public static void printDeath(Unit u) {
         string msg = u.getClass() + u.getHash();
-        ConsoleColor color 
+        ConsoleColor color;
         if(u.getTeam()){
-            printColor(msg, red);
+            color = playerColor;
         } else {
-            printColor(msg, red);
+            color = pcColor;
         }
+        printColor(msg, color);
         printColor(" dies", red);
         Console.WriteLine();
     }
