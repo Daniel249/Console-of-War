@@ -17,7 +17,7 @@ class Printer {
         return null;
     }
     public static void printDeath(Unit u) {
-        string msg = u.getClass() + u.getHash();
+        string msg = u.getName();
         ConsoleColor color;
         if(u.getTeam()){
             color = playerColor;
@@ -28,41 +28,36 @@ class Printer {
         printColor(" dies", red);
         Console.WriteLine();
     }
+    // print attacker hits receiver for dmg
     public static void printAttack(Unit atter, Unit rever) {
-        string attacker = atter.getClass() + atter.getHash();
-        string receiver = rever.getClass() + rever.getHash();
+        // set name and color for attacker and receiver
+        string attacker = atter.getName();
+        string receiver = rever.getName();
+        ConsoleColor atterColor;
+        ConsoleColor reverColor;
         string dmg = atter.getAD().ToString();
         if(atter.getTeam()) {
-             ally(attacker);
-             Console.Write(" hits ");
-             enemy(receiver);
+            atterColor = playerColor;
+            reverColor = pcColor;
         } else {
-            enemy(attacker);
-            Console.Write(" hits ");
-            ally(receiver);
+            atterColor = pcColor;
+            reverColor = playerColor;
         }
+        // print message
+        printColor(attacker, atterColor);
+        Console.Write(" hits ");
+        printColor(receiver, reverColor);
         Console.Write(" for ");
-        red(dmg);
+        printColor(dmg, red);
         Console.WriteLine();
     }
-    // these methods write a msg 
-    public static void enemy(string msg) {
-        Console.BackgroundColor = ConsoleColor.DarkGreen;
-        // Console.ForegroundColor = ConsoleColor.Black;
-        Console.Write(msg);
-        Console.ResetColor();
-    }
-    public static void ally(string msg) {
-        Console.BackgroundColor = ConsoleColor.Blue;
-        Console.Write(msg);
-        Console.ResetColor();
-    }
-    
+    // write a msg from certain color 
     public static void printColor(string msg, ConsoleColor color) {
         Console.BackgroundColor = color;
         Console.Write(msg);
         Console.ResetColor();
     }
+    // track movement
     public static void printMove(string who, int from, int to) {
         Console.WriteLine("{0} moves from {1} to {2}",
         who, from, to);
