@@ -53,11 +53,8 @@ class Unit {
     public bool getTeam() {
         return isPlayer;
     }
-    public int getHash() {
-        return hash;
-    }
-    public string getClass() {
-        return tipo;
+    public string getName() {
+        return tipo + hash;
     }
 
     // methods
