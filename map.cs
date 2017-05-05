@@ -1,12 +1,12 @@
 // using System;
-// clase del mapa
+// map class
 class Map {
     int size = 100;
     public int getSize() {
         return size;
     }
-    // array de unidades de tamaño 200
-    // cada espacio del array es null o una referancia a una unidad
+    // unit array size 200
+    // either reference or null
     Unit[] line;
     
     // get unit in exact location of line
@@ -15,7 +15,7 @@ class Map {
             return null;
         }
         Unit un = null;
-        // si no es null en esa posicion, se le asigna a un
+        // assign to un if not null
         if(line[position] != null) {
             un = line[position];
         }
@@ -28,6 +28,7 @@ class Map {
         }
         line[num] = u;
     }
+    // constructor 
     public Map(int newSize) {
         size = newSize;
         line = new Unit[size];

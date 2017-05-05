@@ -1,9 +1,10 @@
 using System;
-
+// class battle
+// controls map unit and queue
 class Battle {
     Map map;
     TurnQ queue;
-
+    // get set
     public TurnQ getQueue() {
         return queue;
     }
@@ -27,6 +28,7 @@ class Battle {
         }
         return true;
     }
+    // spawn unit of type and team
     public bool spawnUnit(bool isPl, string type) {
         int newPosition = 0;
         if(!isPl) {
@@ -45,7 +47,7 @@ class Battle {
             u.constrUnit(this, newPosition);
             return true;
         } else {
-            Console.WriteLine("Error: Unit = null, cant construct");
+            Console.WriteLine("Error: Unit = null, cant construct on battle.spawnUnit()");
             return false;
         }
     }
