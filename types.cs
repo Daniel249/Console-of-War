@@ -6,6 +6,7 @@ class Warrior : Unit {
         idleCode = "L";
         hitCode = "l";
         attackDamage = 20;
+        // melee 
         attackRange = 1;
         aoeRange = 0;
         atackSpeed = 1;
@@ -13,11 +14,11 @@ class Warrior : Unit {
         healthPoints = 100;
         blockDmg = 5;
         tipo = "warrior";
+        
         hash = hashCounter;
         hashCounter++;
-        // test
-        Console.WriteLine("warrior {0} has entered team {1}",
-        hash, isPl);
+        
+        Printer.printSpawn(this);
     }
 }
 class Archer : Unit {
@@ -37,10 +38,10 @@ class Archer : Unit {
         healthPoints = 60;
         blockDmg = 0;
         tipo = "archer";
+
         hash = hashCounter;
         hashCounter++;
-        // test
-        Console.WriteLine("archer {0} has entered team {1}",
-        hash, isPl);
+        
+        Printer.printSpawn(this);
     }
 }

@@ -51,6 +51,18 @@ class Printer {
         printColor(dmg, red);
         Console.WriteLine();
     }
+    public static void printSpawn(Unit u) {
+        string msg = u.getName();
+        ConsoleColor color;
+        bool isPl = u.getTeam();
+        if(isPl) {
+            color = playerColor;
+        } else {
+            color = pcColor;
+        }
+        printColor(msg, color);
+        Console.WriteLine("has entered team {0}", isPl);
+    }
     // write a msg from certain color 
     public static void printColor(string msg, ConsoleColor color) {
         Console.BackgroundColor = color;
