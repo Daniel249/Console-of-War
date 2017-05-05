@@ -1,39 +1,40 @@
 using System;
 using System.Collections.Generic;
 
-// clase de los Unidades
-// cada uno de los mansitos
+// Units
 class Unit {
     // true for player1
-    // define direccion en la que caminan
+    // define walking direction etc
     protected bool isPlayer; 
-    // visual de la unidad en idle
+    // visual idle state
     protected string idleCode;
-    // visual del unidad cuando recibe daño
+    // visual receive dmg state
     protected string hitCode;
-    // daño que inflige por ataque
+    // attack damage
     protected int attackDamage;
-    // 1 for melee
+    // attack Ranke. 1 for melee
     protected int attackRange;
-    // 1 for each turn
+    // attack speed. at value 1 deal damage each turn
     protected int atackSpeed;
     // 0 for single target
     protected int aoeRange;
     // move range
     protected int moveRange;
-    // vida maxima
+    // max hp
     protected int healthPoints;
-    // block
+    // blocked damage per attack received
     protected int blockDmg;
+    // Unit class
     protected string tipo;
+    // unique hash code
     protected int hash;
+    // hash counter for constructor
     protected static int hashCounter = 0;
 
-    // mapa en el que esta. por si en el futuro agrego la posibilidad
-    // de jugar en varios mapas a la vez
+    // reference to map and battle
     Map map;
     Battle bat;
-    // posicion en el mapa
+    // position in map
     int position;
     
 
@@ -68,14 +69,14 @@ class Unit {
         }
         return dir;
     }
-    // checkea si hay un enemigo en rango de ataque
+    // checks if an enemy is in attackRange
     // checkAttack comes before check move.
     // so it will return false if outOfBound
     public bool checkAtack() {
         int dir = getDirection();
+        // check relative position. distance i, direction dir
         for(int i = 1; i <= attackRange; i++) {
-            // if no hay nada a distancia i en direccion dir desde la position de la unidad
-            // targets cercanos tienen prioridad
+            // nearby targets checked first
             int possiblePlace = i*dir + position;
             // security out of bound. kill unit
             if(possiblePlace >= map.getSize()||
@@ -98,7 +99,8 @@ class Unit {
 
         return false;
     }
-    // checkea si hay un espacio vacio en rango de movimiento
+    // checks if empty space on moveRange
+    //large steps priority
     public bool checkMove() {
         int dir = getDirection();
         for(int i = moveRange; i > 0; i--) {
@@ -145,13 +147,9 @@ class Unit {
     // deal damage to all units given as parameters
     public virtual void attack(params Unit[] us) {
         foreach(Unit u in us) {
-            // test
+            // print attack
             Printer.printAttack(this, u);
             u.receiveDmg(attackDamage);
-            // register dmg received 
-            // Console.WriteLine("{0} {1} received {2} dmg", u.getClass(), u.getHash(),attackDamage);
-            // Console.WriteLine("\t \t \t {0} hits {1} for {2}",
-            // this.tipo + hash, u.tipo + u.hash, attackDamage);
         }
     }
     // receive damage. Die if healthPoints below 0
@@ -166,23 +164,22 @@ class Unit {
     }
     // Unit dies. Remove from map and turn queue
     public void die() {
+        //print death
         Printer.printDeath(this);
         if(map.getMap(position) == this) {
             bat.getQueue().remove(this);
             map.setMap(null, position);
         }
-        // test
-        // Console.WriteLine("\t \t \t {0} dies", tipo + hash);
     }
     
-    // turno de cada unidad
+    // turn 
     public virtual void turn() {
         if(!checkAtack()) {
             checkMove();
         }
         extraTurn();
     }
-    // se puede override para turnos de unidades no convencionales ej:healers
+    // override for non conventional units eg: healers
     public virtual void extraTurn() {
 
     }
