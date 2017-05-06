@@ -21,11 +21,15 @@ class TurnQ
         }
         return false;
     }
-    public void run() {
+    public bool run() {
     // iterate through copy o queue
     // if unit still on original queue run turn on unit
     // unit might have died or something idk
         List <Unit> copyq = new List <Unit> (queue);
+        // end game
+        if(copyq.Count == 0) {
+            return false;
+        }
         for(int i = 0; i < copyq.Count; i++) {
             Unit u = copyq[i];
             if(queue.Contains(u)) {
@@ -40,6 +44,7 @@ class TurnQ
         if(counter == 30) {
             counter = 0;
         }
+        return true;
     }
     
     // constructor

@@ -12,20 +12,22 @@ class Battle {
         return map;
     }
     // run battle
+    // controls when to stop
     public bool turn() {
-        queue.run();
-        return true;
+        return queue.run();
     }
+    // runs in Main until queue.run return false
     public bool run(int army) {
         int counter = 0;
         bool alternate = true;
-        while(turn()) {
+         do {
             if(counter < army) {
                 Program.test(this, alternate);
                 //alternate = !alternate;
                 counter++;
-            }
-        }
+            } 
+        } while(turn());
+
         return true;
     }
     // spawn unit of type and team
