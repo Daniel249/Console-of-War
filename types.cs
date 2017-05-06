@@ -60,6 +60,8 @@ class Archer : Unit {
 
             hash = hashCounter;
             hashCounter++;
+
+            Printer.printSpawn(this);
         }
     }
 }
