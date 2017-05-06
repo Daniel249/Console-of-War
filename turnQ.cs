@@ -1,6 +1,6 @@
 // using System;
 using System.Collections.Generic;
-// Queue 
+// Queue. executes each units turn
 class TurnQ
 {
     // the actual queue

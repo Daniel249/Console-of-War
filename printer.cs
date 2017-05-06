@@ -51,6 +51,7 @@ class Printer {
         printColor(dmg, red);
         Console.WriteLine();
     }
+    // print unit joined which team. on unit construcor
     public static void printSpawn(Unit u) {
         string msg = u.getName();
         ConsoleColor color;
