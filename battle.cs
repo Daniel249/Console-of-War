@@ -20,8 +20,13 @@ class Battle {
     public bool run(int army) {
         int counter = 0;
         bool alternate = true;
-        // checks first if key available. if not continue loop
-         while(!(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape)) {
+        while(true) {
+            // checks first if key available. if not continue loop
+            if(Console.KeyAvailable) {
+                if(Console.ReadKey(true).Key == ConsoleKey.Escape) {
+                    break;
+                }
+            }
             // test army
             if(counter < army) {
                 Program.test(this, alternate);
