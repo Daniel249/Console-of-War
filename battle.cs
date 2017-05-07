@@ -16,17 +16,21 @@ class Battle {
     public bool turn() {
         return queue.run();
     }
-    // runs in Main until queue.run return false
+    // runs in Main until KeyAvailable and ReadKey.Key == Escape
     public bool run(int army) {
         int counter = 0;
         bool alternate = true;
-         do {
+        // checks first if key available. if not continue loop
+         while(!(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape)) {
+            // test army
             if(counter < army) {
                 Program.test(this, alternate);
                 //alternate = !alternate;
                 counter++;
             } 
-        } while(turn());
+            // execute turn each loop
+            turn();
+        }
 
         return true;
     }
