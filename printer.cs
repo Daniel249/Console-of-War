@@ -62,7 +62,7 @@ class Printer {
             color = pcColor;
         }
         printColor(msg, color);
-        Console.WriteLine("has entered team {0}", isPl);
+        Console.WriteLine(" has entered team {0}", isPl);
     }
     // write a msg from certain color 
     public static void printColor(string msg, ConsoleColor color) {
