@@ -1,10 +1,13 @@
 // using System;
 using System.Collections.Generic;
+using System.Threading;
 // Queue. executes each units turn
 class TurnQ
 {
     // the actual queue
     List <Unit> queue;
+    // turn length
+    int turnLength = 500;
     // add unit to queue
     public void add(Unit u) {
         queue.Add(u);
@@ -30,6 +33,8 @@ class TurnQ
         if(copyq.Count == 0) {
             return false;
         }
+        // turn Length
+        Thread.Sleep(turnLength);
         for(int i = 0; i < copyq.Count; i++) {
             Unit u = copyq[i];
             if(queue.Contains(u)) {

@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 // class battle
 // controls map unit and queue
 class Battle {
@@ -36,7 +37,6 @@ class Battle {
             // execute turn each loop
             turn();
         }
-
         return true;
     }
     // spawn unit of type and team
