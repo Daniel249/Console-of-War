@@ -19,25 +19,28 @@ class Battle {
     }
     // runs in Main until KeyAvailable and ReadKey.Key == Escape
     public bool run(int army) {
-        int counter = 0;
-        bool alternate = true;
-        while(true) {
+        bool check = true;
+        while(check) {
             // checks first if key available. if not continue loop
             if(Console.KeyAvailable) {
-                if(Console.ReadKey(true).Key == ConsoleKey.Escape) {
+                ConsoleKey letter = Console.ReadKey(true).Key;
+                if(letter == ConsoleKey.Escape) {
+                    endGame();
                     break;
+                } else {
+                   proKey(letter);
                 }
             }
-            // test army
-            if(counter < army) {
-                Program.test(this, alternate);
-                //alternate = !alternate;
-                counter++;
-            } 
             // execute turn each loop
             turn();
         }
         return true;
+    }
+    void proKey(ConsoleKey key) {
+        spawnUnit(true, key.ToString());
+    }
+    void endGame() {
+
     }
     // spawn unit of type and team
     public bool spawnUnit(bool isPl, string type) {
@@ -48,9 +51,11 @@ class Battle {
         Unit u = null;
         switch(type) {
             case "w":
+            case "W":
             u = new Warrior(isPl);
             break;
             case "a":
+            case "A":
             u = new Archer(isPl);
             break;
         }
@@ -63,8 +68,8 @@ class Battle {
         }
     }
     // constructor
-    public Battle() {
+    public Battle(int turnLength) {
         map = new Map();
-        queue = new TurnQ();
+        queue = new TurnQ(turnLength);
     }
 }

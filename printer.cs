@@ -16,6 +16,7 @@ class Printer {
     public static string askInput() {
         return null;
     }
+    // prints Unit dies
     public static void printDeath(Unit u) {
         string msg = u.getName();
         ConsoleColor color;

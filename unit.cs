@@ -30,6 +30,8 @@ class Unit {
     protected int hash;
     // hash counter for constructor
     protected static int hashCounter = 0;
+    // gold price to spawn
+    int price;
 
     // reference to map and battle
     Map map;

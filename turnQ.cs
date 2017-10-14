@@ -7,7 +7,7 @@ class TurnQ
     // the actual queue
     List <Unit> queue;
     // turn length
-    int turnLength = 500;
+    int turnDuration = 50;
     // add unit to queue
     public void add(Unit u) {
         queue.Add(u);
@@ -25,7 +25,7 @@ class TurnQ
         return false;
     }
     public bool run() {
-    // iterate through copy o queue
+    // iterate through copy of queue
     // if unit still on original queue run turn on unit
     // unit might have died or something idk
         List <Unit> copyq = new List <Unit> (queue);
@@ -34,7 +34,7 @@ class TurnQ
             return false;
         }
         // turn Length
-        Thread.Sleep(turnLength);
+        Thread.Sleep(turnDuration);
         for(int i = 0; i < copyq.Count; i++) {
             Unit u = copyq[i];
             if(queue.Contains(u)) {
@@ -53,8 +53,9 @@ class TurnQ
     }
     
     // constructor
-    public TurnQ() {
+    public TurnQ(int turnDurat) {
         queue = new List<Unit>();
         counter = 0;
+        turnDuration = turnDurat;
     }
 }
