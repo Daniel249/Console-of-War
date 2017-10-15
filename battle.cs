@@ -18,7 +18,7 @@ class Battle {
         return queue.run();
     }
     // runs in Main until KeyAvailable and ReadKey.Key == Escape
-    public bool run(int army) {
+    public bool run() {
         bool check = true;
         while(check) {
             // checks first if key available. if not continue loop
