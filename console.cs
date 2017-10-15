@@ -40,8 +40,8 @@ public class Log {
     static int logWidth = 40;
     static int logHeight = 20;
     // log position
-    static int position_x = 200;
-    static int position_y = 15;
+    static int position_x = 100;
+    static int position_y = 5;
 
     static int currentPosition = 0;
 

@@ -54,7 +54,7 @@ class Map {
         size = newSize;
         line = new Unit[size];
         location_x = 10;
-        location_y = 20;
+        location_y = 30;
     }
     public Map() {
         line = new Unit[size];

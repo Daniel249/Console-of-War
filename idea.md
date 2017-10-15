@@ -14,3 +14,6 @@ warrior and archer constructors
 unit.die/attack/move writes in console
 atackspeed on archer and warrior classes
 int parameter and whole function of battle.run
+
+remove test
+manual spawn of enemy units on battle.proKey

@@ -37,6 +37,15 @@ class Battle {
         return true;
     }
     void proKey(ConsoleKey key) {
+        // test
+        if(key.ToString() == "U") {
+            spawnUnit(false, "W");
+            return;
+        }
+        if(key.ToString() == "I") {
+            spawnUnit(false, "A");
+            return;
+        }
         spawnUnit(true, key.ToString());
     }
     void endGame() {
@@ -46,7 +55,7 @@ class Battle {
     public bool spawnUnit(bool isPl, string type) {
         int newPosition = 0;
         if(!isPl) {
-            newPosition = map.getSize() - 1;
+            newPosition = map.getSize();
         }
         Unit u = null;
         switch(type) {
