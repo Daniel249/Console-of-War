@@ -63,7 +63,9 @@ class Printer {
             color = pcColor;
         }
         printColor(msg, color);
-        Console.WriteLine(" has entered team {0}", isPl);
+        Console.Write(" has entered team {0}", isPl);
+        // Console.Write(Console.CursorLeft.ToString());
+        Console.WriteLine();
     }
     // write a msg from certain color 
     public static void printColor(string msg, ConsoleColor color) {
@@ -73,7 +75,8 @@ class Printer {
     }
     // track movement
     public static void printMove(string who, int from, int to) {
-        Console.WriteLine("{0} moves from {1} to {2}",
+        Console.Write("{0} moves from {1} to {2}",
         who, from, to);
+        Console.WriteLine();
     }
-}
+} 
