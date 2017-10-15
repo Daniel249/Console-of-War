@@ -125,8 +125,15 @@ class Unit {
     }
     // move to newPosition in map. Then update position variable
     public virtual void move(int newPosition) {
+        // set reference on map and then print on console
         map.setMap(this, newPosition);
-        map.setMap(null, position);
+        ConsoleColor fcolor = Printer.getColor(this.isPlayer);
+        map.printTo(newPosition, idleCode, fcolor, map.getLaneColor());
+        // remove reference from map and erase from console
+        if(map.getMap(position) == this) {
+            map.setMap(null, position);
+            map.eraseFrom(position, map.getLaneColor());
+        }
         // test
         // Printer.printMove(tipo + hash, position, newPosition);
         this.position = newPosition;
@@ -168,9 +175,10 @@ class Unit {
     public void die() {
         //print death
         Printer.printDeath(this);
+        bat.getQueue().remove(this);
         if(map.getMap(position) == this) {
-            bat.getQueue().remove(this);
             map.setMap(null, position);
+            map.eraseFrom(position, map.getLaneColor());
         }
     }
     

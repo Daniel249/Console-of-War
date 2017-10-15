@@ -3,11 +3,25 @@ using System;
 class Printer {
     // colors
     // player1
-    static ConsoleColor playerColor = ConsoleColor.Blue;
+    static ConsoleColor playerColor = ConsoleColor.Cyan;
     // pc
-    static ConsoleColor pcColor = ConsoleColor.DarkGreen;
+    static ConsoleColor pcColor = ConsoleColor.Magenta;
     // death / dmg dealt
     static ConsoleColor red = ConsoleColor.Red;
+    // get set
+    public static ConsoleColor getPlayerColor() {
+        return playerColor;
+    }
+    public static ConsoleColor getPcColor() {
+        return pcColor;
+    }
+    public static ConsoleColor getColor(bool isPlayer) {
+        if(isPlayer) {
+            return playerColor;
+        } else {
+            return pcColor;
+        }
+    }
 
     public static void printReg() {
         
@@ -19,12 +33,7 @@ class Printer {
     // prints Unit dies
     public static void printDeath(Unit u) {
         string msg = u.getName();
-        ConsoleColor color;
-        if(u.getTeam()){
-            color = playerColor;
-        } else {
-            color = pcColor;
-        }
+        ConsoleColor color = getColor(u.getTeam());
         Terminal.GetLog().setCursor();
 
         printColor(msg, color);
@@ -37,16 +46,9 @@ class Printer {
         // set name and color for attacker and receiver
         string attacker = atter.getName();
         string receiver = rever.getName();
-        ConsoleColor atterColor;
-        ConsoleColor reverColor;
+        ConsoleColor atterColor = getColor(atter.getTeam());
+        ConsoleColor reverColor = getColor(rever.getTeam());
         string dmg = atter.getAD().ToString();
-        if(atter.getTeam()) {
-            atterColor = playerColor;
-            reverColor = pcColor;
-        } else {
-            atterColor = pcColor;
-            reverColor = playerColor;
-        }
         // print message
         Terminal.GetLog().setCursor();
 
@@ -61,13 +63,8 @@ class Printer {
     // print unit joined which team. on unit construcor
     public static void printSpawn(Unit u) {
         string msg = u.getName();
-        ConsoleColor color;
         bool isPl = u.getTeam();
-        if(isPl) {
-            color = playerColor;
-        } else {
-            color = pcColor;
-        }
+        ConsoleColor color = getColor(isPl);;
 
         Terminal.GetLog().setCursor();
 
