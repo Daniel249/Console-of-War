@@ -4,10 +4,11 @@ class Program {
     static void Main(string[] args) {
         Console.WriteLine("Hello World!");
         Terminal.Clear();
-        Terminal.ResetBuffer(60, 200);
+        // max height, width. (72,240)
+        Terminal.ResetBuffer(72, 240);
         // tost();
         // battle constructor(int turnDuration, int mapSize)
-        Battle battle = new Battle(50, 100);
+        Battle battle = new Battle(100, 100);
         // console dimensions
         // test(battle, 5, true);
         // test(battle, 5, false);
