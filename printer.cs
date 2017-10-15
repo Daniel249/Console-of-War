@@ -1,5 +1,5 @@
 using System;
-
+// printAttack, printSpawn, printDeath use Terminal.GetLog().setCursor(); and .clearLog(2);
 class Printer {
     // colors
     // player1
@@ -25,9 +25,12 @@ class Printer {
         } else {
             color = pcColor;
         }
+        Terminal.GetLog().setCursor();
+
         printColor(msg, color);
         printColor(" dies", red);
-        Console.WriteLine();
+
+        Terminal.GetLog().clearLog(2);
     }
     // print attacker hits receiver for dmg
     public static void printAttack(Unit atter, Unit rever) {
@@ -45,12 +48,15 @@ class Printer {
             reverColor = playerColor;
         }
         // print message
+        Terminal.GetLog().setCursor();
+
         printColor(attacker, atterColor);
         Console.Write(" hits ");
         printColor(receiver, reverColor);
         Console.Write(" for ");
         printColor(dmg, red);
-        Console.WriteLine();
+
+        Terminal.GetLog().clearLog(2);
     }
     // print unit joined which team. on unit construcor
     public static void printSpawn(Unit u) {
@@ -62,16 +68,25 @@ class Printer {
         } else {
             color = pcColor;
         }
+
+        Terminal.GetLog().setCursor();
+
         printColor(msg, color);
         Console.Write(" has entered team {0}", isPl);
         // Console.Write(Console.CursorLeft.ToString());
-        Console.WriteLine();
+
+        Terminal.GetLog().clearLog(2);
     }
     // write a msg from certain color 
     public static void printColor(string msg, ConsoleColor color) {
         Console.BackgroundColor = color;
         Console.Write(msg);
         Console.ResetColor();
+    }
+    public static void justPrint(string msg) {
+        Terminal.GetLog().setCursor();
+        Console.Write(msg);
+        Terminal.GetLog().clearLog(2);
     }
     // track movement
     public static void printMove(string who, int from, int to) {

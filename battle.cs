@@ -63,7 +63,7 @@ class Battle {
             u.constrUnit(this, newPosition);
             return true;
         } else {
-            Console.WriteLine("Error: Unit = null, cant construct on battle.spawnUnit()");
+            Printer.justPrint("Error: Unit = null on battle.spawnUnit()");
             return false;
         }
     }
