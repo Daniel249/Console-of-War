@@ -24,7 +24,8 @@ class Battle {
             // checks first if key available. if not continue loop
             if(Console.KeyAvailable) {
                 ConsoleKey letter = Console.ReadKey(true).Key;
-                if(letter == ConsoleKey.Escape) {
+                Skript.processKey(letter, this);
+                if(!Skript.getContinueGame()) {
                     endGame();
                     break;
                 } else {
@@ -36,8 +37,12 @@ class Battle {
         }
         return true;
     }
-    void proKey(ConsoleKey key) {
+    void proKey(ConsoleKey key) {       
+        if(Skript.processKey(key, this)) {
+            return;
+        }
         // test
+        // spawn enemy units
         if(key.ToString() == "U") {
             spawnUnit(false, "W");
             return;
