@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-public static class Terminal {
+static class Terminal {
     // reference to log
     static Log logg = new Log();
     // Console size
@@ -24,9 +24,9 @@ public static class Terminal {
         size_y = sizey;
     }
     // setSize and then apply to console
-    public static void setSize(int sizex, int sizey) {
+    public static void setSize(int sizey, int sizex) {
         _setSize(sizex, sizey);
-        ResetBuffer(size_x, size_y);
+        ResetBuffer(size_y, size_x);
     }
     static Process OutputConsole;
     public static void Clear() {

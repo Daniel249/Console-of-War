@@ -9,6 +9,7 @@ class Program {
         // tost();
         // battle constructor(int turnDuration, int mapSize)
         Battle battle = new Battle(100, 100);
+        Skript.printBounds(battle.getMap());
         // console dimensions
         // test(battle, 5, true);
         // test(battle, 5, false);

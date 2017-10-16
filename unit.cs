@@ -202,8 +202,6 @@ class Unit {
         position = place;
         map = batt.getMap();
         map.setMap(this, place);
-        ConsoleColor fcolor = Printer.getColor(this.isPlayer);
-        map.printTo(place, "|", fcolor, map.getLaneColor());
 
         batt.getQueue().add(this);
     }
