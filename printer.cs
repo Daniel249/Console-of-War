@@ -74,9 +74,15 @@ class Printer {
 
         Terminal.GetLog().clearLog(2);
     }
-    // write a msg from certain color 
+    // print text with certain backround color 
     public static void printColor(string msg, ConsoleColor color) {
         Console.BackgroundColor = color;
+        Console.Write(msg);
+        Console.ResetColor();
+    }
+    // print text with certain foreground color
+    public static void printfColor(string msg, ConsoleColor color) {
+        Console.ForegroundColor = color;
         Console.Write(msg);
         Console.ResetColor();
     }
