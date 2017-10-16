@@ -2,9 +2,31 @@ using System;
 using System.Diagnostics;
 using System.IO;
 public static class Terminal {
+    // reference to log
     static Log logg = new Log();
+    // Console size
+    static int size_x;
+    static int size_y;
+
+    //get set
     public static Log GetLog() {
         return logg;
+    }
+    public static int getSize_x() {
+        return size_x;
+    }
+    public static int getSize_y() {
+        return size_y;
+    }
+    // set console size variables
+    static void _setSize(int sizex, int sizey) {
+        size_x = sizex;
+        size_y = sizey;
+    }
+    // setSize and then apply to console
+    public static void setSize(int sizex, int sizey) {
+        _setSize(sizex, sizey);
+        ResetBuffer(size_x, size_y);
     }
     static Process OutputConsole;
     public static void Clear() {
