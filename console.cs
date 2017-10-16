@@ -33,11 +33,27 @@ static class Terminal {
         Console.Clear();
     }
     // rescale whole console
+    // buffer size must always be greater than window size
     public static void ResetBuffer(int height, int width) {
-        Console.WindowHeight = height;
-        Console.BufferHeight = height;
-        Console.WindowWidth = width;
-        Console.BufferWidth = width;
+        if(height > Console.BufferHeight) {
+            Console.BufferHeight = height;
+            Console.WindowHeight = height;
+        } else {
+            Console.WindowHeight = height;
+            Console.BufferHeight = height;
+        }
+
+        if(width > Console.BufferWidth) {
+            Console.BufferWidth = width;
+            Console.WindowWidth = width;
+        } else {
+            Console.WindowWidth = width;
+            Console.BufferWidth = width;
+            
+        }
+    }
+    static void compareBuffSize() {
+
     }
     public static void PrintSym(string symbol, int pos_x, int pos_y, ConsoleColor color) {
         Console.SetCursorPosition(pos_x,pos_y);
