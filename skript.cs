@@ -12,6 +12,8 @@ static class Skript {
         Printer.printfColor("Mid", ConsoleColor.Yellow);
         // Console.SetCursorPosition(Terminal.getSize_x()/2, Terminal.getSize_y()/2);
         Printer.justPrint("(Press any letter to start)");
+        Printer.justPrint("allies: a archers, w warriors");
+        Printer.justPrint("Enemies: i archers, u warriors");
     }
     // print bounds of map
     public static void printBounds(Map map) {
