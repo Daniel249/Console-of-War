@@ -82,8 +82,8 @@ class Battle {
         }
     }
     // constructor
-    public Battle(int turnLength, int mapSize) {
-        map = new Map(mapSize);
+    public Battle(int turnLength, int mapSize, int map_x, int map_y) {
+        map = new Map(mapSize, map_x, map_y);
         queue = new TurnQ(turnLength);
     }
 }

@@ -50,11 +50,11 @@ class Map {
         printTo(print_pos, code, print_fcolor, print_bcolor);
     }
     // constructor 
-    public Map(int newSize) {
+    public Map(int newSize, int pos_x, int pos_y) {
         size = newSize;
         line = new Unit[size];
-        location_x = 10;
-        location_y = 30;
+        location_x = pos_x;
+        location_y = pos_y;
     }
     public Map() {
         line = new Unit[size];

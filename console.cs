@@ -34,8 +34,9 @@ static class Terminal {
     }
     // rescale whole console
     // buffer size must always be greater than window size
+    // bug after escaping from game. making the console smaller and relaunching crashes it
     public static void ResetBuffer(int height, int width) {
-        if(height > Console.BufferHeight) {
+        if(height >= Console.BufferHeight) {
             Console.BufferHeight = height;
             Console.WindowHeight = height;
         } else {
@@ -43,7 +44,7 @@ static class Terminal {
             Console.BufferHeight = height;
         }
 
-        if(width > Console.BufferWidth) {
+        if(width >= Console.BufferWidth) {
             Console.BufferWidth = width;
             Console.WindowWidth = width;
         } else {
