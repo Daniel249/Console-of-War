@@ -49,31 +49,6 @@ class Battle {
     void endGame() {
 
     }
-    // spawn unit of type and team
-    public bool spawnUnit(bool isPl, string type, int mapNum) {
-        int newPosition = 0;
-        if(!isPl) {
-            newPosition = maps[mapNum].getSize();
-        }
-        Unit u = null;
-        switch(type) {
-            case "w":
-            case "W":
-            u = new Warrior(isPl);
-            break;
-            case "a":
-            case "A":
-            u = new Archer(isPl);
-            break;
-        }
-        if(u != null) {
-            u.constrUnit(this, mapNum);
-            return true;
-        } else {
-            Printer.justPrint("Error: Unit = null on battle.spawnUnit()");
-            return false;
-        }
-    }
     // constructor
     public Battle(int turnLength, int midSize, int sideSize, int map_x, int map_y) {
         maps = new Map[3];
