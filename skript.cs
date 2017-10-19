@@ -23,6 +23,7 @@ static class Skript {
         Printer.justPrint("(Press any letter to start)");
         Printer.justPrint("allies: a archers, w warriors");
         Printer.justPrint("Enemies: i archers, u warriors");
+        Printer.justPrint("1,2,3 to change lane");
     }
     // print bounds of map
     public static void printBounds(Map map) {
