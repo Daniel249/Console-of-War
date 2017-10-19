@@ -196,12 +196,16 @@ class Unit {
     // constructor
     // called in battle.spawnUnit
     // isPl is used on class constructor
-    public void constrUnit(Battle batt, int place) {
+    public void constrUnit(Battle batt, int laneNum) {
         // set map, battle and position. Add unit to queue
         this.bat = batt;
-        position = place;
-        map = batt.getMap();
-        map.setMap(this, place);
+
+        map = batt.getMap(laneNum);
+        position = 0;
+        if(!this.isPlayer) {
+            position = map.getSize();
+        }
+        map.setMap(this, position);
 
         batt.getQueue().add(this);
     }
