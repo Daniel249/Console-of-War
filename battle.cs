@@ -3,14 +3,24 @@ using System.Threading;
 // class battle
 // controls map unit and queue
 class Battle {
-    Map map;
+    // references
+    Map[] maps;
     TurnQ queue;
+    Entity player;
+    Entity nonPlayer;
     // get set
     public TurnQ getQueue() {
         return queue;
     }
-    public Map getMap() {
-        return map;
+    public Map getMap(int num) {
+        return maps[num];
+    }
+    public Entity getPlayer(bool isPlayer) {
+        if(isPlayer) {
+            return player;
+        } else {
+            return nonPlayer;
+        }
     }
     // run battle
     // controls when to stop
@@ -18,49 +28,32 @@ class Battle {
         return queue.run();
     }
     // runs in Main until KeyAvailable and ReadKey.Key == Escape
-    public bool run() {
+    public void run() {
         bool check = true;
         while(check) {
-            // checks first if key available. if not continue loop
-            if(Console.KeyAvailable) {
-                ConsoleKey letter = Console.ReadKey(true).Key;
-                Skript.processKey(letter, this);
-                if(!Skript.getContinueGame()) {
-                    endGame();
-                    break;
-                } else {
-                   proKey(letter);
-                }
+            // stop battle
+            if(!Skript.getContinueGame()) {
+                endGame();
+                break;
             }
+            
+            //ask for players turn
+            player.runTurn();
+            nonPlayer.runTurn();
             // execute turn each loop
             turn();
+            
         }
-        return true;
     }
-    void proKey(ConsoleKey key) {       
-        if(Skript.processKey(key, this)) {
-            return;
-        }
-        // test
-        // spawn enemy units
-        if(key.ToString() == "U") {
-            spawnUnit(false, "W");
-            return;
-        }
-        if(key.ToString() == "I") {
-            spawnUnit(false, "A");
-            return;
-        }
-        spawnUnit(true, key.ToString());
-    }
+    
     void endGame() {
 
     }
     // spawn unit of type and team
-    public bool spawnUnit(bool isPl, string type) {
+    public bool spawnUnit(bool isPl, string type, int mapNum) {
         int newPosition = 0;
         if(!isPl) {
-            newPosition = map.getSize();
+            newPosition = maps[mapNum].getSize();
         }
         Unit u = null;
         switch(type) {
@@ -74,7 +67,7 @@ class Battle {
             break;
         }
         if(u != null) {
-            u.constrUnit(this, newPosition);
+            u.constrUnit(this, mapNum);
             return true;
         } else {
             Printer.justPrint("Error: Unit = null on battle.spawnUnit()");
@@ -82,8 +75,19 @@ class Battle {
         }
     }
     // constructor
-    public Battle(int turnLength, int mapSize, int map_x, int map_y) {
-        map = new Map(mapSize, map_x, map_y);
+    public Battle(int turnLength, int midSize, int sideSize, int map_x, int map_y) {
+        maps = new Map[3];
+        maps[0] = new Map(sideSize, map_x - 1, map_y - 2);
+        maps[1] = new Map(midSize, map_x, map_y);
+        maps[2] = new Map(sideSize, map_x - 1, map_y + 2);
         queue = new TurnQ(turnLength);
+        setUp();
+        
+    }
+    // constructor helpers
+    void setUp() {
+        Skript.setBattle(this);
+        player = new Player();
+        nonPlayer = new Botplayer();
     }
 }
