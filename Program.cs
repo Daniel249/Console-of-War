@@ -9,7 +9,7 @@ class Program {
         // tost();
         // battle constructor
         // (int turnDuration, int mapSize, nexus_pos_x, nexus_pos_y)
-        Battle battle = new Battle(100, 120, 140, 10 , 30);
+        Battle battle = new Battle(100, 120, 122, 10 , 30);
         Skript.printBounds(battle.getMap(0));
         Skript.printBounds(battle.getMap(1));
         Skript.printBounds(battle.getMap(2));
