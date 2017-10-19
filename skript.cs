@@ -1,10 +1,19 @@
 using System;
 
 static class Skript {
+
+    static Battle mainBattle;
     static bool continueGame = true;
     public static bool getContinueGame() {
         return continueGame;
     }
+    public static Battle getBattle() {
+        return mainBattle;
+    }
+    public static void setBattle(Battle bat) {
+        mainBattle = bat;
+    }
+
     // clear console and print greetings
     public static void greet() {
         Terminal.Clear();
@@ -25,7 +34,7 @@ static class Skript {
         map.printTo(pos, "|", fcolor, ConsoleColor.Black);
     }
     // check for Esc key 
-    public static bool processKey(ConsoleKey key, Battle battle) {
+    public static bool processKey(ConsoleKey key) {
         if(key == ConsoleKey.Escape) {
             endGame();
         }
