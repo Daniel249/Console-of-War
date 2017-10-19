@@ -26,6 +26,7 @@ static class Terminal {
     // setSize and then apply to console
     public static void setSize(int sizey, int sizex) {
         _setSize(sizex, sizey);
+        Console.CursorVisible = false;
         ResetBuffer(size_y, size_x);
     }
     static Process OutputConsole;
@@ -62,7 +63,7 @@ static class Terminal {
         Console.Write(symbol);
     }
     public static void PrintText(string text, int pos_x, int pos_y, ConsoleColor color) {
-        Console.SetCursorPosition(pos_x,pos_y);
+        Console.SetCursorPosition(pos_x, pos_y);
         Console.ForegroundColor = color;
         Console.Write(text);
     }
