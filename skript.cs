@@ -34,6 +34,35 @@ static class Skript {
         pos = map.getSize();
         map.printTo(pos, "|", fcolor, ConsoleColor.Black);
     }
+    public static void spawnMinions() {
+        Printer.printLogfColor("Minion Spawn", ConsoleColor.Green);
+        Cronometer clock = getBattle().getQueue().getGameClock();
+        bool siege = (clock.getMinute() == 0);
+        bool super = false;
+        for (int i = 0; i < 3; i++) {
+            spawnMinionsInLane(i, true, siege, super);
+            spawnMinionsInLane(i, false, siege, super);
+        }
+        
+    }
+    public static void spawnMinionsInLane(int laneNum, bool isPlayer, bool siege, bool super) {
+        Battle battle = getBattle();
+        for (int i = 0; i < 3; i++) {
+            Unit u = new meleeMinion(isPlayer);
+            u.constrUnit(battle, laneNum);
+        }       
+        if(super) {
+            Unit u = new superMinion(isPlayer);
+            u.constrUnit(battle, laneNum);
+        }
+        if(siege) {
+            Unit u = new siegeMinion(isPlayer);
+        }
+        for (int i = 0; i < 3; i++) {
+            Unit u = new casterMinion(isPlayer);
+            u.constrUnit(battle, laneNum);
+        }
+    }
     // check for Esc key 
     public static bool processKey(ConsoleKey key) {
         if(key == ConsoleKey.Escape) {
