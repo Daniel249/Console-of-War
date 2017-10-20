@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Threading;
 // Queue. executes each units turn
-class TurnQ
-{
+class TurnQ {
+    // cronometer
+    Cronometer gameClock;
     // the actual queue
     List <Unit> queue;
     // turn length
@@ -15,11 +16,14 @@ class TurnQ
     public void remove(Unit u) {
         queue.Remove(u);
     }
+    public Cronometer getGameClock() {
+        return gameClock;
+    }
     // modulo 30. at TurnQ.run()
-    int counter;
+    int timeUnit;
     // check if AS and turn coincide
     public bool modCounter(int AS) {
-        if(counter % AS == 0) {
+        if(timeUnit % AS == 0) {
             return true;
         }
         return false;
@@ -44,18 +48,74 @@ class TurnQ
                 }
             }
         }
-        // reset at 30
-        counter++;
-        if(counter == 30) {
-            counter = 0;
-        }
+        // unidad de tiempo ++
+        getGameClock().passTime();
         return true;
     }
     
     // constructor
     public TurnQ(int turnDurat) {
         queue = new List<Unit>();
-        counter = 0;
+        gameClock = new Cronometer();
+        timeUnit = 0;
         turnDuration = turnDurat;
     }
 }
+// pass of time and relations between time units
+class Cronometer {
+    int timeUnit;
+    // 30 timeUnits
+    int second;
+    // 4 seconds
+    int minute;
+    // 3 Minutes
+    int hour;
+
+    //get set
+    public int getTime() {
+        return timeUnit;
+    }
+    // timeUnit++ reset at 30
+    public void passTime() {
+        timeUnit++;
+        if(timeUnit == 30) {
+            timeUnit = 0;
+            passSecond();
+            Printer.justPrint("segundo + 1");
+        }
+    }
+    public int getSeconds() {
+        return second;
+    }
+    public void passSecond() {
+        second++;
+        if(second == 4) {
+            second = 0;
+            passMinute();
+        }
+    }
+    public int getMinute() {
+        return minute;
+    }
+    // spawn minions here
+    public void passMinute() {
+        Skript.spawnMinions();
+        minute++;
+        if(minute == 3) {
+            minute = 0;
+            passHour();
+        }
+    }
+    public int getHour() {
+        return hour;
+    }
+    public void passHour() {
+        
+    }
+    
+    // constructor
+    public Cronometer() {
+        timeUnit = 0;
+    }
+}
+
