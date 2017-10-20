@@ -77,7 +77,7 @@ static class Terminal {
 }
 public class Log {
      // log size
-    static int logWidth = 40;
+    static int logWidth = 45;
     static int logHeight = 20;
     // log position
     static int position_x = 100;
