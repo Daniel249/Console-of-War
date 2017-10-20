@@ -26,6 +26,9 @@ class Player : Entity{
         if(key.ToString() == "I") {
             eUnit = new Archer(false);
         }
+        if(key.ToString() == "O") {
+            eUnit = new Lancer(false);
+        }
         // skip spawnUnit to avoid printing "Unit = null"
         // only if enemy got to spawn an Unit
         if (spawnEnemy(eUnit)) {
@@ -54,6 +57,9 @@ class Player : Entity{
             case "a":
             case "A":
             u = new Archer(true);
+            break;
+            case "Z":
+            u = new Lancer(true);
             break;
         }
         spawnUnit(u);
