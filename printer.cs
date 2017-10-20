@@ -86,6 +86,17 @@ class Printer {
         Console.Write(msg);
         Console.ResetColor();
     }
+    // print in log in color
+    public static void printLogfColor(string msg, ConsoleColor color) {
+        Terminal.GetLog().setCursor();
+
+        Console.ForegroundColor = color;
+        Console.Write(msg);
+        Console.ResetColor();
+        
+        Terminal.GetLog().clearLog(2);
+    }
+    // print in log in black and white
     public static void justPrint(string msg) {
         Terminal.GetLog().setCursor();
         Console.Write(msg);
