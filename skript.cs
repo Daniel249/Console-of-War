@@ -1,8 +1,9 @@
 using System;
 
 static class Skript {
-
+    // reference to battle
     static Battle mainBattle;
+    // bool continue game
     static bool continueGame = true;
     public static bool getContinueGame() {
         return continueGame;
@@ -45,6 +46,7 @@ static class Skript {
         }
         
     }
+    // spawn minions in a lane for a player
     public static void spawnMinionsInLane(int laneNum, bool isPlayer, bool siege, bool super) {
         Battle battle = getBattle();
         for (int i = 0; i < 3; i++) {

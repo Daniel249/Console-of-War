@@ -75,6 +75,7 @@ class Cronometer {
     public int getTime() {
         return timeUnit;
     }
+    // time conversion
     // timeUnit++ reset at 30
     public void passTime() {
         timeUnit++;

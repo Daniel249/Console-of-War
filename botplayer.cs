@@ -11,4 +11,7 @@ class Botplayer : Entity {
         }
         nextUnit = null;
     }
+    bool think() {
+        return false;
+    }
 }

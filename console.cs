@@ -75,13 +75,14 @@ static class Terminal {
         //OutputConsole
     }
 }
-public class Log {
+// game log
+class Log {
      // log size
-    static int logWidth = 45;
-    static int logHeight = 20;
+    int logWidth = 40;
+    int logHeight = 20;
     // log position
-    static int position_x = 100;
-    static int position_y = 5;
+    int position_x = 100;
+    int position_y = 5;
 
     static int currentPosition = 0;
 
@@ -92,10 +93,11 @@ public class Log {
     public void setCursor() {
         setCursor(0);
     }
+    // set cursor relative to log position
     public void setCursor(int offset) {
         Console.SetCursorPosition(position_x, getLine(offset));
     }
-    // increase currentPosition by one and return absolute position
+    // get line_y offset-ammount of lines below current line
     public int getLine(int offset) {
         // currentPosition++;
         int verticalPosition = position_y + ((currentPosition + offset) % logHeight);
@@ -108,7 +110,7 @@ public class Log {
         Console.ResetColor();
         for(int i = 1; i <= borderSize; i++) {
             setCursor(i);
-            Console.Write(new string(' ', position_x + logWidth - Console.CursorLeft));
+            Console.Write(new string(' ', logWidth));
         }
         increaseCurrentPos();
     }   

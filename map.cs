@@ -1,10 +1,12 @@
 using System;
 // map class
 class Map {
-    int size = 100;
+    // map size
+    int size;
     public int getSize() {
         return size;
     }
+    // map location on console
     int location_x;
     int location_y;
     ConsoleColor laneColor = ConsoleColor.Gray;
