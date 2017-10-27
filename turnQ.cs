@@ -71,6 +71,11 @@ class Cronometer {
     // 3 Minutes
     int hour;
 
+    // conversion rates from above
+    int  TUtoSEC;
+    int SECtoMIN;
+    int MINtoHOUR;
+
     //get set
     public int getTime() {
         return timeUnit;
@@ -79,7 +84,7 @@ class Cronometer {
     // timeUnit++ reset at 30
     public void passTime() {
         timeUnit++;
-        if(timeUnit == 30) {
+        if(timeUnit == TUtoSEC) {
             timeUnit = 0;
             passSecond();
             Printer.justPrint("segundo + 1");
@@ -90,7 +95,7 @@ class Cronometer {
     }
     public void passSecond() {
         second++;
-        if(second == 4) {
+        if(second == SECtoMIN) {
             second = 0;
             passMinute();
         }
@@ -102,7 +107,7 @@ class Cronometer {
     public void passMinute() {
         Skript.spawnMinions();
         minute++;
-        if(minute == 3) {
+        if(minute == MINtoHOUR) {
             minute = 0;
             passHour();
         }
@@ -117,6 +122,9 @@ class Cronometer {
     // constructor
     public Cronometer() {
         timeUnit = 0;
+        TUtoSEC = 30;
+        SECtoMIN = 4;
+        MINtoHOUR = 3;
     }
 }
 
