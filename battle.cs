@@ -6,8 +6,8 @@ class Battle {
     // references
     Map[] maps;
     TurnQ queue;
-    Entity player;
-    Entity nonPlayer;
+    Entity player_1;
+    Entity player_2;
     // get set
     public TurnQ getQueue() {
         return queue;
@@ -17,9 +17,9 @@ class Battle {
     }
     public Entity getPlayer(bool isPlayer) {
         if(isPlayer) {
-            return player;
+            return player_1;
         } else {
-            return nonPlayer;
+            return player_2;
         }
     }
     // run battle
@@ -38,8 +38,8 @@ class Battle {
             }
             
             //ask for players turn
-            player.runTurn();
-            nonPlayer.runTurn();
+            player_1.runTurn();
+            player_2.runTurn();
             // execute turn each loop
             turn();
             
@@ -62,7 +62,7 @@ class Battle {
     // constructor helpers
     void setUp() {
         Skript.setBattle(this);
-        player = new Player();
-        nonPlayer = new Botplayer();
+        player_1 = new Player();
+        player_2 = new Botplayer();
     }
 }
