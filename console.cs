@@ -2,15 +2,15 @@ using System;
 using System.Diagnostics;
 using System.IO;
 static class Terminal {
-    // reference to log
-    static Log logg = new Log();
+    // reference to logs
+    static Log[] loggs = new Log[3];
     // Console size
     static int size_x;
     static int size_y;
 
     //get set
-    public static Log GetLog() {
-        return logg;
+    public static Log GetLog(int num) {
+        return loggs[num];
     }
     public static int getSize_x() {
         return size_x;
@@ -32,6 +32,12 @@ static class Terminal {
     static Process OutputConsole;
     public static void Clear() {
         Console.Clear();
+    }
+    //initialize logs
+    public static void initLogs() {
+        loggs[0] = new Log(20, 5);
+        loggs[1] = new Log(70, 5);
+        loggs[2] = new Log(120, 5);
     }
     // rescale whole console
     // buffer size must always be greater than window size
@@ -84,7 +90,7 @@ class Log {
     int position_x = 100;
     int position_y = 5;
 
-    static int currentPosition = 0;
+    int currentPosition = 0;
 
     void increaseCurrentPos() {
         currentPosition++;
@@ -113,5 +119,16 @@ class Log {
             Console.Write(new string(' ', logWidth));
         }
         increaseCurrentPos();
-    }   
+    }
+    // constructors
+    public Log(int pos_x, int pos_y) {
+        position_x = pos_x;
+        position_y = pos_y;
+    }
+    public Log(int width, int height, int pos_x, int pos_y) {
+        logWidth = width;
+        logHeight = height;
+        position_x = pos_x;
+        position_y = pos_y;
+    }  
 }

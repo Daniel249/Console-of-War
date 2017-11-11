@@ -20,11 +20,12 @@ static class Skript {
         Terminal.Clear();
         Console.SetCursorPosition(20, 3);
         Printer.printfColor("Mid", ConsoleColor.Yellow);
+        Terminal.initLogs();
         // Console.SetCursorPosition(Terminal.getSize_x()/2, Terminal.getSize_y()/2);
         // Printer.justPrint("(Press any letter to start)");
-        Printer.justPrint("allies: a archers, w warriors");
-        Printer.justPrint("Enemies: i archers, u warriors");
-        Printer.justPrint("1,2,3 to change lane");
+        Printer.justPrint(Printer.machineLog, "allies: a archers, w warriors");
+        Printer.justPrint(Printer.machineLog, "Enemies: i archers, u warriors");
+        Printer.justPrint(Printer.machineLog, "1,2,3 to change lane");
     }
     // print bounds of map
     public static void printBounds(Map map) {
@@ -36,7 +37,7 @@ static class Skript {
         map.printTo(pos, "|", fcolor, ConsoleColor.Black);
     }
     public static void spawnMinions() {
-        Printer.printLogfColor("Minion Spawn", ConsoleColor.Green);
+        Printer.printLogfColor(Printer.normalLog, "Minion Spawn", ConsoleColor.Green);
         Cronometer clock = getBattle().getQueue().getGameClock();
         bool siege = (clock.getMinute() == 0);
         bool super = false;

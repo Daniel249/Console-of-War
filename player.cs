@@ -118,9 +118,9 @@ abstract class Entity {
                 break;
             }
             string msg = "Lane changed to " + laneName;
-            Printer.justPrint(msg);
+            Printer.justPrint(Printer.normalLog, msg);
         } else {
-            Printer.justPrint("not a valid Lane");
+            Printer.justPrint(Printer.normalLog, "not a valid Lane");
         }
     }
     // end game instructions
@@ -131,7 +131,7 @@ abstract class Entity {
         if(u != null) {
             u.constrUnit(Skript.getBattle(), getCurrentLane());
         } else {
-            Printer.justPrint("Error: Unit = null");
+            Printer.justPrint(Printer.attackLog, "Error: Unit = null");
         }
 
     }
