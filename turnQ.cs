@@ -87,7 +87,7 @@ class Cronometer {
         if(timeUnit == TUtoSEC) {
             timeUnit = 0;
             passSecond();
-            Printer.justPrint("segundo + 1");
+            Printer.justPrint(Printer.normalLog, "pass of time");
         }
     }
     public int getSeconds() {
