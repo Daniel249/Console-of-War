@@ -43,22 +43,7 @@ static class Terminal {
     // buffer size must always be greater than window size
     // bug after escaping from game. making the console smaller and relaunching crashes it
     public static void ResetBuffer(int height, int width) {
-        if(height >= Console.BufferHeight) {
-            Console.BufferHeight = height;
-            Console.WindowHeight = height;
-        } else {
-            Console.WindowHeight = height;
-            Console.BufferHeight = height;
-        }
-
-        if(width >= Console.BufferWidth) {
-            Console.BufferWidth = width;
-            Console.WindowWidth = width;
-        } else {
-            Console.WindowWidth = width;
-            Console.BufferWidth = width;
-            
-        }
+        Console.SetWindowSize(width, height);
     }
     static void compareBuffSize() {
 
