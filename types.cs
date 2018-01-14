@@ -1,6 +1,7 @@
 using System;
 
 class Warrior : Unit {
+    new string tipo = "warrior";
     public Warrior(bool isPl) {
         isPlayer = isPl;
         idleCode = "L";
@@ -13,7 +14,6 @@ class Warrior : Unit {
         moveRange = 1;
         healthPoints = 100;
         blockDmg = 5;
-        tipo = "warrior";
         
         hash = hashCounter;
         hashCounter++;
@@ -22,6 +22,7 @@ class Warrior : Unit {
     }
 }
 class Archer : Unit {
+    new string tipo = "archer";
     public Archer(bool isPl) {
         isPlayer = isPl;
         if(isPl) {
@@ -37,7 +38,6 @@ class Archer : Unit {
         moveRange = 1;
         healthPoints = 60;
         blockDmg = 0;
-        tipo = "archer";
 
         hash = hashCounter;
         hashCounter++;
@@ -46,6 +46,7 @@ class Archer : Unit {
     }
 }
 class Lancer : Unit {
+    new string tipo = "lancer";
     public Lancer(bool isPl) {
         isPlayer = isPl;
         idleCode = "+";
@@ -57,7 +58,6 @@ class Lancer : Unit {
         moveRange = 1;
         healthPoints = 90;
         blockDmg = 10;
-        tipo = "lancer";
 
         hash = hashCounter;
         hashCounter++;
@@ -66,6 +66,7 @@ class Lancer : Unit {
     }
 }
 class casterMinion : Unit {
+    new string tipo = "cminion";
     public casterMinion(bool isPl) {
         isPlayer = isPl;
         idleCode = "-";
@@ -77,7 +78,6 @@ class casterMinion : Unit {
         moveRange = 1;
         healthPoints = 80;
         blockDmg = 0;
-        tipo = "cminion";
 
         hash = hashCounter;
         hashCounter++;
@@ -86,6 +86,7 @@ class casterMinion : Unit {
     }
 }
 class meleeMinion : Unit {
+    new string tipo = "mminion";
     public meleeMinion(bool isPl) {
         isPlayer = isPl;
         idleCode = "|";
@@ -97,7 +98,6 @@ class meleeMinion : Unit {
         moveRange = 1;
         healthPoints = 100;
         blockDmg = 0;
-        tipo = "mminion";
 
         hash = hashCounter;
         hashCounter++;
@@ -106,42 +106,42 @@ class meleeMinion : Unit {
     }
 }
 class siegeMinion : Unit {
+    new string tipo = "sminion";
     public siegeMinion(bool isPl) {
-    isPlayer = isPl;
-    idleCode = "V";
-    hitCode = "V";
-    attackDamage = 10;
-    attackRange = 2;
-    aoeRange = 0;
-    atackSpeed = 1;
-    moveRange = 1;
-    healthPoints = 100;
-    blockDmg = 2;
-    tipo = "sminion";
+        isPlayer = isPl;
+        idleCode = "V";
+        hitCode = "V";
+        attackDamage = 10;
+        attackRange = 2;
+        aoeRange = 0;
+        atackSpeed = 1;
+        moveRange = 1;
+        healthPoints = 100;
+        blockDmg = 2;
 
-    hash = hashCounter;
-    hashCounter++;
+        hash = hashCounter;
+        hashCounter++;
 
-    Printer.printSpawn(this);
+        Printer.printSpawn(this);
     }
 }
 class superMinion : Unit {
+    new string tipo = "superminion";
     public superMinion(bool isPl) {
-    isPlayer = isPl;
-    idleCode = "W";
-    hitCode = "W";
-    attackDamage = 10;
-    attackRange = 2;
-    aoeRange = 0;
-    atackSpeed = 1;
-    moveRange = 1;
-    healthPoints = 100;
-    blockDmg = 2;
-    tipo = "superminion";
+        isPlayer = isPl;
+        idleCode = "W";
+        hitCode = "W";
+        attackDamage = 10;
+        attackRange = 2;
+        aoeRange = 0;
+        atackSpeed = 1;
+        moveRange = 1;
+        healthPoints = 100;
+        blockDmg = 2;
 
-    hash = hashCounter;
-    hashCounter++;
+        hash = hashCounter;
+        hashCounter++;
 
-    Printer.printSpawn(this);
+        Printer.printSpawn(this);
     }
 }

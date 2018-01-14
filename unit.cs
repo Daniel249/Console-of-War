@@ -25,7 +25,7 @@ class Unit {
     // blocked damage per attack received
     protected int blockDmg;
     // Unit class
-    protected string tipo;
+    protected static string tipo;
     // unique hash code
     protected int hash;
     // hash counter for constructor
