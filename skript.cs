@@ -23,8 +23,8 @@ static class Skript {
         Terminal.initLogs();
         // Console.SetCursorPosition(Terminal.getSize_x()/2, Terminal.getSize_y()/2);
         // Printer.justPrint("(Press any letter to start)");
-        Printer.justPrint(Printer.machineLog, "allies: a archers, w warriors");
-        Printer.justPrint(Printer.machineLog, "Enemies: i archers, u warriors");
+        Printer.justPrint(Printer.machineLog, "allies: a archers, w warriors, z lancers");
+        Printer.justPrint(Printer.machineLog, "Enemies: i archers, u warriors, o lancers");
         Printer.justPrint(Printer.machineLog, "1,2,3 to change lane");
     }
     // print bounds of map
