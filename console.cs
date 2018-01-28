@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 static class Terminal {
+
     // reference to logs
     static Log[] loggs = new Log[3];
     // Console size
@@ -18,14 +19,15 @@ static class Terminal {
     public static int getSize_y() {
         return size_y;
     }
-    // set console size variables
-    static void _setSize(int sizex, int sizey) {
-        size_x = sizex;
-        size_y = sizey;
-    }
+
+
+
+
+
     // setSize and then apply to console
     public static void setSize(int sizey, int sizex) {
-        _setSize(sizex, sizey);
+        size_x = sizex;
+        size_y = sizey;
         Console.CursorVisible = false;
         ResetBuffer(size_y, size_x);
     }
